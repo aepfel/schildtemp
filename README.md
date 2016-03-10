@@ -1,2 +1,2 @@
 # schildtemp
-Terrariam "management"
+Terrarium "management"
