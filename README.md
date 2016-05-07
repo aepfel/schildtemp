@@ -24,4 +24,6 @@ http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
 
 initialisierung:
 
-./db_create.py && ./db_migrate.py && ./db_init.py
+./install.sh
+
+
