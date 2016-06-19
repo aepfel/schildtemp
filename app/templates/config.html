@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Sensor 0 Configuraion</title>
+      <link href="../static/style.css" rel="stylesheet">
+      <script src="../static/jQuery.js"></script>
+      <script src="../static/jQuery-ui.js"></script>
+      <!-- Javascript -->
+      <script>
+         $(function() {
+	{% for temp in temps %}
+            $( "#slider-{{ loop.index }}" ).slider({
+               orientation:"vertical",
+               value:{{temp}},
+	        min:10,
+		 max:30,
+               slide: function( event, ui ) {
+                  $( "#t{{ loop.index }}" ).val( ui.value );
+               }	
+            });            
+            $( "#t{{ loop.index }}" ).val( $( "#slider-{{ loop.index }}" ).slider( "value" ) );
+        {% endfor %}
+         });
+      </script>
+      <style type="text/css">
+div.inline { float:left; }
+.clearBoth { clear:both; }
+</style>
+   </head>
+   <body>
+      <!-- HTML -->      
+	<form>
+	<table><tr>
+	{% for temp in temps %}
+		<td align="center"><p>{{ loop.index }}</br><input type="text" id="t{{ loop.index }}" name="t{{ loop.index }}" style="border:0; color:#b9cd6d; font-weight:bold; width: 1.5em;"></p>
+		<div id="slider-{{ loop.index }}" class="inline"></div></td>
+        {% endfor %}
+		</tr></table>
+	{% for rel in relstate %}
+               R{{ loop.index }}<input type="checkbox", id="R{{ loop.index }}" name="R{{ loop.index }}" value="R{{ loop.index }}" {{rel}}>
+        {% endfor %}
+	<input type="submit" value="speichern" style="border:0; color:#000000; font-weight:bold;">
+	</form>
+	<a href="./chart">Zur&uumlck</a>
+   </body>
+</html>
+
+
