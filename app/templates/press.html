@@ -36,21 +36,14 @@
         pointHighlightStroke: "rgba(151,187,205,1)",
         data: [
         {% for time in times %}
-        20,
+        1000,
         {% endfor %}]
       }]
     };
     var MyNewChart = new Chart(ctx).Line(data);
   </script>
-<table width="500" border="0">
-    <tr border="0">
-    {% for r in relstat %}
-        <td bgcolor="#{{ r }}" border="0">R{{ loop.index }}</td>
-    {% endfor %}
-    </tr>
-</table>
-<a href="./config">Sensor0</a>: {{ data1 }}°C ({{min}}/{{max}}/{{med}}) <br>
-Sensor1: n.a.{{ data2 }}°C
-</br><a href="./press">Luftdruck</a>
+</br>Sensor0: {{ data1 }} hPa ({{delta10}}/{{delta50}}/{{delta}})
+</br>Sensor1: 0{{ data2 }} hPa
+</br><a href="./">Temperatur</a>
 </body>
 </html>
